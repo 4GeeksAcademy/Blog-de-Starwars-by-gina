@@ -12,7 +12,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			personajes:[],
+			character: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -20,13 +22,35 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
+				fetch("https://www.swapi.tech/api/people/")
+				  .then(res => res.json())
+				  .then(data => {
+					setStore({ personajes: data.results });
+				  })
+				  .catch(error => {
+					
+					console.error("Error al cargar los datos:", error);
+				  });
+			  }
+              
 			},
+			getCharacter: (id) =>{
+				fetch("https://www.swapi.tech/api/people/${id}")
+				.then(res => res.json())
+				  .then(data => {
+					setStore({ character: data.results });
+				  })
+				  .catch(error => {
+					
+					console.error("Error al cargar los datos:", error);
+				  });
+			},
+			
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
+			
+			
 
 				//we have to loop the entire demo array to look for the respective index
 				//and change its color
@@ -40,6 +64,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			}
 		}
 	};
-};
+
 
 export default getState;
