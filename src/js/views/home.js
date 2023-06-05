@@ -1,34 +1,53 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import "../../styles/home.css";
-import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import Card from "../component/personajes";
+import CardPlanetas from "../component/planetas";
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
-
-
-
+	const { store } = useContext(Context);
+  
 	return (
 		<div className="container">
-		  <div className="row">
-			<h2>listad de personajes</h2>
-			{store.personajes.map((personajes, index) => {
-			  return (
-				<div className="col-12 col-md-4" key={index}>
-				  <div className="card">
-					<img src={personajes.url} className="card-img-top" alt="..." />
-					<div className="card-body">
-					  <h5 className="card-title">{personajes.name}</h5>
-					  <Link to={`/personajes/${personajes.id}`} className="btn btn-primary">
-						Ver más...
-						</Link>
-					</div>
-				  </div>
-				</div>
-			  );
-			})}
-		  </div>
+			<div className="col-12">
+				<h1 className="text-danger">Personajes</h1>
+			</div>
+			<div className="row overX">
+				{store.personajes.map((item, index) => {
+					return (
+						<div key={index} className="col-4 ">
+							<Card
+								key={index}
+								nombre={item.nombre}
+								genero={item.genero}
+								Hair_Color={item.Hair_Color}
+								eye={item.eye}
+							/>
+						</div>
+					);
+				})}
+			</div>
+			<div className="col-12 mt-5">
+				<h1 className="text-danger">Planetas</h1>
+			</div>
+			<div className="row overX">
+				{store.planetas.map((item, index) => {
+					return (
+						<div key={index} className="col-4 ">
+							<CardPlanetas
+								key={index}
+								url={item.url}
+								name={item.name}
+								diameter={item.diameter}
+								population={item.population}
+								terrain={item.terrain}
+							/>
+						</div>
+					);
+				})}
+			</div>
 		</div>
-	  );
-	};
+	);
+};
+	
