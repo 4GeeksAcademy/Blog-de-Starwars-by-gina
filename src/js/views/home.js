@@ -19,7 +19,7 @@ export const Home = () => {
 						<div key={index} className="col-4 ">
 							<Card
 								key={index}
-								nombre={item.nombre}
+								personaje={item.nombre}
 								genero={item.genero}
 								Hair_Color={item.Hair_Color}
 								eye={item.eye}

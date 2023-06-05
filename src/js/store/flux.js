@@ -35,17 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error al cargar los datos:", error);
 				  });
 			  },
-			/*getPlanetDetail: url => {
-				fetch(url)
-					.then(response => response.json())
-					.then(result => {
-						let detalle = result.result;
-						console.log("****", detalle.properties);
-						return detalle.properties;
-					})
-
-					.catch(error => console.log("error", error));
-            },*/
+		
 
 			getPlanetDetail: url => {
 				fetch("https://www.swapi.tech/api/planets/")
