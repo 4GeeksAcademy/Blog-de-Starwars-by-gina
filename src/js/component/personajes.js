@@ -1,18 +1,25 @@
-import React from "react";
+import React,{useEffect, useState, useContext} from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
-const Card = props => {
+
+const CardPersonajes = props => {
+	const { store, actions } = useContext(Context);
+	const [detalle, setDetalle] = useState(null);
+
+	
+
 	return (
 		<div className="col">
 			<div className="card">
 				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/694px-Star_Wars_Logo.svg.png" className="card-img-top" alt="..." />
 				<div className="card-body">
 					<h5 className="card-title">
-						<strong>Personaje:</strong> {props.nombre}
+						<strong>Personaje:</strong> {props.name}
 					</h5>
 					<p className="card-text">
-						<strong>Genero:</strong> {props.genero}
+						<strong>Genero:</strong> {props.uid}
 					</p>
 					<p className="card-text">
 						<strong>Color de Pelo:</strong> {props.Hair_Color}
@@ -22,7 +29,7 @@ const Card = props => {
 					</p>
 					<div className="row">
 						<div className="col-6">
-							<Link to="/single">
+							<Link to="/personajes/:id">
 								<div className="btn btn-primary">Learn More</div>
 							</Link>
 						</div>
@@ -37,10 +44,10 @@ const Card = props => {
 		</div>
 	);
 };
-Card.propTypes = {
-	nombre: PropTypes.string,
-	genero: PropTypes.string,
+CardPersonajes.propTypes = {
 	Hair_Color: PropTypes.string,
-	eye: PropTypes.string
+	eye: PropTypes.string,
+	uid: PropTypes.string,
+	name: PropTypes.string
 };
-export default Card;
+export default CardPersonajes;

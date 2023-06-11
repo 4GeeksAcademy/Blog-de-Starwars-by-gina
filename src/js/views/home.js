@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-import Card from "../component/personajes";
+import CardPersonajes from "../component/personajes";
 import CardPlanetas from "../component/planetas";
+
 
 export const Home = () => {
 	const { store } = useContext(Context);
@@ -17,11 +18,11 @@ export const Home = () => {
 				{store.personajes.map((item, index) => {
 					return (
 						<div key={index} className="col-4 ">
-							<Card
+							<CardPersonajes
 								key={index}
-								personaje={item.nombre}
-								genero={item.genero}
-								Hair_Color={item.Hair_Color}
+								name={item.name}
+								uid={item.uid}
+								url={item.Hair_Color}
 								eye={item.eye}
 							/>
 						</div>
@@ -50,4 +51,3 @@ export const Home = () => {
 		</div>
 	);
 };
-	

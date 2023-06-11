@@ -15,7 +15,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 
 			planetas: [],
-			personajes: []
+			personajes: [],
+			peopleDetails: []
 			
 		},
 		actions: {
@@ -26,18 +27,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			loadSomeData: () => {
 				fetch("https://www.swapi.tech/api/people/")
-				  .then(res => res.json())
-				  .then(data => {
-					setStore({ personajes: data.results });
+				  .then(Response=> Response.json())
+				  .then(Response => {
+
+					console.log(Response);
+					setStore({ personajes: Response.results });
 				  })
-				  .catch(error => {
+			
 					
-					console.error("Error al cargar los datos:", error);
-				  });
+					
 			  },
+			  getPeopleDetails: (id) => {
+                fetch("https://www.swapi.tech/api/people/" + id, {method: "GET"})
+                .then(response => response.json())
+                .then(response => {
+                        setStore({peopleDetails: response.result.properties})
+                        console.log(response.result)})
+                .catch(error => console.log('error', error))
+            },
+
 		
 
-			getPlanetDetail: url => {
+			getPlanetDetail: () => {
 				fetch("https://www.swapi.tech/api/planets/")
 				  .then(res => res.json())
 				  .then(data => {

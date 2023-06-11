@@ -25,10 +25,7 @@ const CardPlanetas = props => {
 						<strong>Name:</strong> {props.name}
 					</h5>
 					<p className="card-text">
-					<strong>Diameter:</strong> {detalle ? detalle.diameter : ""}
-					</p>
-					<p className="card-text">
-					<strong>Population:</strong> {detalle ? detalle.population : ""}
+					<strong>Population:</strong> {props.population}
 					</p>
 					<p className="card-text">
 					<strong>Terrain:</strong> {detalle ? detalle.terrain : ""}
