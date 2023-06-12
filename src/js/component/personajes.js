@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 
-const CardPersonajes = props => {
+const Personajes = props => {
 	const { store, actions } = useContext(Context);
 	const [detalle, setDetalle] = useState(null);
 
@@ -16,16 +16,16 @@ const CardPersonajes = props => {
 				<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Star_Wars_Logo.svg/694px-Star_Wars_Logo.svg.png" className="card-img-top" alt="..." />
 				<div className="card-body">
 					<h5 className="card-title">
-						<strong>Personaje:</strong> {props.name}
+						<strong>{props.name}</strong> 
 					</h5>
 					<p className="card-text">
-						<strong>Genero:</strong> {props.uid}
+						<strong>Gender:</strong> {props.gender}
 					</p>
 					<p className="card-text">
-						<strong>Color de Pelo:</strong> {props.Hair_Color}
+						<strong>Hair Color:</strong> {props.Hair_Color}
 					</p>
 					<p className="card-text">
-						<strong>Color de ojos:</strong> {props.eye}
+						<strong>eye_color:</strong> {props.eye}
 					</p>
 					<div className="row">
 						<div className="col-6">
@@ -44,10 +44,10 @@ const CardPersonajes = props => {
 		</div>
 	);
 };
-CardPersonajes.propTypes = {
+Personajes.propTypes = {
+	gender: PropTypes.string,
 	Hair_Color: PropTypes.string,
-	eye: PropTypes.string,
-	uid: PropTypes.string,
+	eye_color: PropTypes.string,
 	name: PropTypes.string
 };
-export default CardPersonajes;
+export default Personajes;

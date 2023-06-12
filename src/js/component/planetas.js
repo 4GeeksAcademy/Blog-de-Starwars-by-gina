@@ -9,7 +9,7 @@ const CardPlanetas = props => {
 
 	useEffect(() => {
 		const fetchPlanetDetail = async () => {
-		  const planetDetail = await actions.getPlanetDetail(props.url);
+		  const planetDetail = await actions.getPlanet(props.url);
 		  setDetalle(planetDetail);
 		};
 	  

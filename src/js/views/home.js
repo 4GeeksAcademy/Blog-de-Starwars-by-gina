@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-import CardPersonajes from "../component/personajes";
 import CardPlanetas from "../component/planetas";
+import CardPersonajes from "../component/personajes";
+
 
 
 export const Home = () => {
@@ -12,7 +13,7 @@ export const Home = () => {
 	return (
 		<div className="container">
 			<div className="col-12">
-				<h1 className="text-danger">Personajes</h1>
+				<h1 className="text-danger">Characters</h1>
 			</div>
 			<div className="row overX">
 				{store.personajes.map((item, index) => {
@@ -21,9 +22,9 @@ export const Home = () => {
 							<CardPersonajes
 								key={index}
 								name={item.name}
-								uid={item.uid}
-								url={item.Hair_Color}
-								eye={item.eye}
+								gender={item.gender}
+								Hair Color={item.Hair_Color}
+								Eye color={item.Eye_color}
 							/>
 						</div>
 					);
