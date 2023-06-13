@@ -30,14 +30,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			})
 			.catch(error => console.error('Error al cargar los datos:', error));
 		},
-		getPeopleDetails: id => {
-		  fetch("https://www.swapi.tech/api/people/id")
-			.then(response => response.json())
-			.then(data => {
-			  setStore({ peopleDetails: data.result.properties });
-			  console.log(data.result);
-			})
-			.catch(error => console.log('Error:', error));
+		getPeopleDetails: (id) => {
+			fetch(`https://www.swapi.tech/api/people/${id}`)
+			  .then(response => response.json())
+			  .then(data => {
+				if (data.result) {
+				  setStore({ peopleDetails: data.result.properties });
+				  console.log(data.result);
+				} else {
+				  throw new Error('Invalid response data');
+				}
+			  })
+			  .catch(error => {
+				console.log('Error:', error);
+			  });
+		  
+			  
+			 
+		  
+			
 		},
 		getPlanet: () => {
 		  fetch("https://www.swapi.tech/api/planets/")

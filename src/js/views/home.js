@@ -2,13 +2,18 @@ import React, { useState, useEffect, useContext } from "react";
 
 import "../../styles/home.css";
 import { Context } from "../store/appContext";
-import CardPlanetas from "../component/planetas";
-import CardPersonajes from "../component/personajes";
+import CardPlanetas from "../component/CardPlanetas";
+import CardPersonajes from "../component/CardPersonajes";
 
 
 
 export const Home = () => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		actions.loadSomeData();
+
+	},[])
   
 	return (
 		<div className="container">
@@ -23,7 +28,7 @@ export const Home = () => {
 								key={index}
 								name={item.name}
 								gender={item.gender}
-								Hair Color={item.Hair_Color}
+								hair_color={item.hair_color}
 								Eye color={item.Eye_color}
 							/>
 						</div>
