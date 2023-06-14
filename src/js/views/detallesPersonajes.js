@@ -17,13 +17,12 @@ const DetallesPersonajes = () => {
     <div className="col-10 ">
       {peopleDetails ? (
         <div className="card mb-3">
-          <div className="row ">
             <div className="col-md-4 "style={{ width: '1200px', height: '800px' }}>
               <img src="https://images.reporteindigo.com/wp-content/uploads/2023/04/personajes-star-wars.jpg" className="img-fluid rounded-start" alt="..." />
             </div>
             <div className="col-md-10 ">
               <div className="card-body ">
-                <h5 className="card-title">{peopleDetails.name}</h5>
+                <h1 className="card-title">{peopleDetails.name}</h1>
                 <p className="card-text">Birth Year: {peopleDetails.birth_year}</p>
                 <p className="card-text">Eye Color: {peopleDetails.eye_color}</p>
                 <p className="card-text">Gender: {peopleDetails.gender}</p>
@@ -33,7 +32,6 @@ const DetallesPersonajes = () => {
               </div>
             </div>
           </div>
-        </div>
       ) : (
         <h3>Cargando...</h3>
       )}

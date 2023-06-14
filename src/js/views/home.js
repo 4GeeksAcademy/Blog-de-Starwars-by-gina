@@ -44,11 +44,9 @@ export const Home = () => {
 						<div key={index} className="col-4 ">
 							<CardPlanetas
 								key={index}
-								url={item.url}
 								name={item.name}
-								diameter={item.diameter}
-								population={item.population}
-								terrain={item.terrain}
+								uid={item.uid}
+								url={item.url}
 							/>
 						</div>
 					);
