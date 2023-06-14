@@ -16,7 +16,7 @@ const CardPersonajes = (props) => {
 						<strong>{props.name}</strong>
 					</h5>
 					<p className="card-text">
-						<strong>uid:</strong> {props.uid}
+					<strong>uid:</strong> {props.uid}
 					</p>
 					<p className="card-text">
 						<strong>url:</strong> {props.url}
@@ -24,9 +24,9 @@ const CardPersonajes = (props) => {
 					
 					<div className="row">
 						<div className="col-6">
-							<Link to="/CardPersonajes/:CardPersonajes/:uid">
-								<div className="btn btn-primary">Learn More</div>
-							</Link>
+						<Link to={`/personajes/${props.uid}`}>
+						<div className="btn btn-primary">Learn More</div>
+						</Link>
 						</div>
 						<div className="col-6">
 							<a href="#" className="btn btn-outline-warning">

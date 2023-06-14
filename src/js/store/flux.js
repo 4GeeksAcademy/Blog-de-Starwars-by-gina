@@ -32,32 +32,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		getPeopleDetails: (id) => {
 			fetch(`https://www.swapi.tech/api/people/${id}`)
-			  .then(response => response.json())
+			  .then(response => {
+				if (response.ok) {
+				  return response.json();
+				} else {
+				  throw new Error('Error de respuesta de la API');
+				}
+			  })
 			  .then(data => {
-				if (data.result) {
+				if (data.result && data.result.properties) {
 				  setStore({ peopleDetails: data.result.properties });
 				  console.log(data.result);
 				} else {
-				  throw new Error('Invalid response data');
+				  throw new Error('Datos de respuesta inválidos');
 				}
 			  })
 			  .catch(error => {
 				console.log('Error:', error);
 			  });
-		  
-			  
+		  }
 			 
 		  
 			
 		},
 		getPlanet: () => {
-		  fetch("https://www.swapi.tech/api/planets/")
-			.then(response => response.json())
-			.then(data => {
-			  setStore({ planetas: data.results });
-			})
-			.catch(error => console.error('Error al cargar los datos:', error));
-		},
+			fetch("https://www.swapi.tech/api/planets/")
+			  .then(response => response.json())
+			  .then(data => {
+				setStore({ planetas: data.results });
+			  })
+			  .catch(error => console.error('Error al cargar los datos:', error));
+		  },
 		changeColor: (index, color) => {
 		  const store = getStore();
 		  const demo = store.demo.map((elm, i) => {
@@ -68,6 +73,5 @@ const getState = ({ getStore, getActions, setStore }) => {
 		}
 	  }
 	};
-  };
   
   export default getState;

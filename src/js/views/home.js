@@ -27,9 +27,9 @@ export const Home = () => {
 							<CardPersonajes
 								key={index}
 								name={item.name}
-								gender={item.gender}
-								hair_color={item.hair_color}
-								Eye color={item.Eye_color}
+								uid={item.uid}
+								url={item.url}
+								
 							/>
 						</div>
 					);
