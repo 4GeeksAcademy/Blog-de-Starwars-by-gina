@@ -4,6 +4,7 @@ import "../../styles/home.css";
 import { Context } from "../store/appContext";
 import CardPlanetas from "../component/CardPlanetas";
 import CardPersonajes from "../component/CardPersonajes";
+import CardVehiculos from "../component/CardVehiculos";
 
 
 
@@ -36,7 +37,7 @@ export const Home = () => {
 				})}
 			</div>
 			<div className="col-12 mt-5">
-				<h1 className="text-danger">Planetas</h1>
+				<h1 className="text-danger">Planets</h1>
 			</div>
 			<div className="row overX">
 				{store.planetas.map((item, index) => {
@@ -47,6 +48,24 @@ export const Home = () => {
 								name={item.name}
 								uid={item.uid}
 								url={item.url}
+							/>
+						</div>
+					);
+				})}
+			</div>
+			<div className="col-12 mt-5">
+			<h1 className="text-danger">Vehicles</h1>
+			</div>
+			<div className="row overX">
+				{store.vehiculos.map((item, index) => {
+					return (
+						<div key={index} className="col-4 ">
+							<CardVehiculos
+								key={index}
+								name={item.name}
+								uid={item.uid}
+								url={item.url}
+								
 							/>
 						</div>
 					);

@@ -8,6 +8,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import DetallesPersonajes from './views/detallesPersonajes';
 import DetallesPlanetas from './views/detallesPlanetas';
+import DetallesVehiculos from "./views/detallesVehiculos";
 
 const Layout = () => {
 	const basename = process.env.BASENAME || "";
@@ -21,11 +22,12 @@ const Layout = () => {
 						<Route path="/" element={<Home />} />
 						<Route path="/personajes/:id" element={<DetallesPersonajes />} />
 						<Route path="/planetas/:id" element={<DetallesPlanetas />} />
+						<Route path="/vehiculos/:id" element={<DetallesVehiculos />} />
 						<Route path="/demo" element={<Demo />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
 					</Routes>
 					<Footer />
-				</ScrollToTop>
+					</ScrollToTop>
 			</BrowserRouter>
 		</div>
 	);
